@@ -19,32 +19,32 @@ jobs:
         run: bundle install
       - name: Run lint
         run: bundle exec rubocop
-  # success_notify:
-  #   needs: [test, lint]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: slack notify
-  #     uses: rtCamp/action-slack-notify@v2
-  #     env:
-  #       SLACK_CHANNEL: times_だいそん
-  #       SLACK_COLOR: 'good'
-  #       SLACK_ICON: https://github.com/TechEssentialsSpartan.png?size=48
-  #       SLACK_MESSAGE: LGTM!!
-  #       SLACK_TITLE: さすが
-  #       SLACK_USERNAME: レビューBot
-  #       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-  # failure_notify:
-  #   if: failure()
-  #   needs: [test, lint]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: slack notify
-  #     uses: rtCamp/action-slack-notify@v2
-  #     env:
-  #       SLACK_CHANNEL: times_だいそん
-  #       SLACK_COLOR: 'danger'
-  #       SLACK_ICON: https://github.com/TechEssentialsSpartan.png?size=48
-  #       SLACK_MESSAGE: アウト!!
-  #       SLACK_TITLE: 残念
-  #       SLACK_USERNAME: レビューBot
-  #       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  success_notify:
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+    - name: slack notify
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: times_だいそん
+        SLACK_COLOR: 'good'
+        SLACK_ICON: https://github.com/TechEssentialsSpartan.png?size=48
+        SLACK_MESSAGE: LGTM!!
+        SLACK_TITLE: さすが
+        SLACK_USERNAME: レビューBot
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  failure_notify:
+    if: failure()
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+    - name: slack notify
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: times_だいそん
+        SLACK_COLOR: 'danger'
+        SLACK_ICON: https://github.com/TechEssentialsSpartan.png?size=48
+        SLACK_MESSAGE: アウト!!
+        SLACK_TITLE: 残念
+        SLACK_USERNAME: レビューBot
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
