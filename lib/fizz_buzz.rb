@@ -1,3 +1,12 @@
 def fizz_buzz(number)
-  # 実装してください
+  n = number
+  if n % 15 == 0
+   'Fizz Buzz'
+  elsif n % 3 == 0
+   'Fizz'
+  elsif n % 5 == 0
+   'Buzz'
+  else
+    n.to_s
+  end
 end
