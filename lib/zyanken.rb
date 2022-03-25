@@ -1,17 +1,6 @@
 puts "何本勝負？(press 1 or 3 or 5)"
 fight = gets.chomp
 
-# case game
-# when "1"
-#   puts "#{game}本勝負を選びました"
-# when "3"
-#   puts "#{game}本勝負を選びました"
-# when "5"
-#   puts "#{game}本勝負を選びました"
-# else
-#   puts "正しい数字を選んでください"
-# end
-
 win  = 0
 lose = 0
 next_game = true
