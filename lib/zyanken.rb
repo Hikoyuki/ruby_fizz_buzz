@@ -7,8 +7,8 @@ next_game = true
 
 puts "#{fight}本勝負を選びました"
 
-fight.to_i.times do |fight|
-  puts "#{fight + 1}本目"
+fight.to_i.times do |f|
+  puts "#{f + 1}本目"
   next_game = true
 
   while next_game
@@ -26,7 +26,9 @@ fight.to_i.times do |fight|
       puts 'あいこ！'
       next_game = true
 
-    elsif (jankens[:"#{cpu}"] == 'グー' && jankens[:"#{you}"] == 'パー') || (jankens[:"#{cpu}"] == 'パー' && jankens[:"#{you}"] == 'チョキ') || (jankens[:"#{cpu}"] == 'チョキ' && jankens[:"#{you}"] == 'グー') # 勝ちの条件
+    elsif (jankens[:"#{cpu}"] == 'グー' && jankens[:"#{you}"] == 'パー') ||
+          (jankens[:"#{cpu}"] == 'パー' && jankens[:"#{you}"] == 'チョキ') ||
+          (jankens[:"#{cpu}"] == 'チョキ' && jankens[:"#{you}"] == 'グー') # 勝ちの条件
       puts 'あなたの勝ちです'
       win += 1
       next_game = false
