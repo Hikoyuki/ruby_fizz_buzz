@@ -1,4 +1,4 @@
-require "cgi"
+require 'cgi'
 require 'csv'
 
 url_array = [
@@ -11,17 +11,17 @@ url_array = [
 
 decoded_url = url_array.map do |url|
   item_data = url[25..-1].gsub!('/', ',')
-  data = item_data.split(",")
-  item = CGI.unescape("#{data[0]}")
-  data[0] =item
+  data = item_data.split(',')
+  item = CGI.unescape((data[0]).to_s)
+  data[0] = item
   data.delete_at(1)
   data
 end
 
 amazon_csv = CSV.generate do |csv|
   decoded_url.each do |du|
-    csv << ["商品ID", "商品名"]
-    csv << [du.first, du.last ]
+    csv << %w[商品ID 商品名]
+    csv << [du.first, du.last]
   end
 end
 
