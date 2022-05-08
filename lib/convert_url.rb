@@ -18,14 +18,6 @@ decoded_url = url_array.map do |url|
   item_data
 end
 
-#  = CSV.generate do |csv|
-#   decoded_url.each do |du|
-#     csv <<
-#     csv << [du[3], du[5]]
-#   end
-# end
-# require 'byebug'; byebug
-
 CSV.open('amazon_url.csv', 'w') do |csv|
   csv << %w[商品ID 商品名]
   decoded_url.each do |du|
