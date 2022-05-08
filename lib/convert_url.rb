@@ -10,16 +10,25 @@ url_array = [
 ]
 
 decoded_url = url_array.map do |url|
-  item_data = url.split('/')
-  item_data[3] = CGI.unescape((item_data[3]).to_s)
+  url_data = url.split('/')
+  item_data = {
+    id: url_data[5],
+    url: CGI.unescape((url_data[3]).to_s)
+  }
   item_data
 end
 
-amazon_csv = CSV.generate do |csv|
+#  = CSV.generate do |csv|
+#   decoded_url.each do |du|
+#     csv <<
+#     csv << [du[3], du[5]]
+#   end
+# end
+# require 'byebug'; byebug
+
+CSV.open('amazon_url.csv', 'w') do |csv|
+  csv << %w[商品ID 商品名]
   decoded_url.each do |du|
-    csv << %w[商品ID 商品名]
-    csv << [du[3], du[5]]
+    csv << [du[:id], du[:url]]
   end
 end
-
-p amazon_csv
